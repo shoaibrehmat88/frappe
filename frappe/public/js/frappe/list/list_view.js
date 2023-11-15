@@ -625,12 +625,17 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		}
 
 		const subject_field = this.columns[0].df;
+		// let subject_html = `
+		// 	<input class="level-item list-check-all" type="checkbox"
+		// 		title="${__("Select All")}">
+		// 	<span class="level-item list-liked-by-me hidden-xs">
+		// 		<span title="${__("Likes")}">${frappe.utils.icon("heart", "sm", "like-icon")}</span>
+		// 	</span>
+		// 	<span class="level-item">${__(subject_field.label)}</span>
+		// `;
 		let subject_html = `
 			<input class="level-item list-check-all" type="checkbox"
 				title="${__("Select All")}">
-			<span class="level-item list-liked-by-me hidden-xs">
-				<span title="${__("Likes")}">${frappe.utils.icon("heart", "sm", "like-icon")}</span>
-			</span>
 			<span class="level-item">${__(subject_field.label)}</span>
 		`;
 		const $columns = this.columns
@@ -966,7 +971,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 
 		const div = document.createElement("div");
 		div.innerHTML = `
-			<span class="like-action ${heart_class}">
+			<span class="hidden like-action ${heart_class}">
 				${frappe.utils.icon("heart", "sm", "like-icon")}
 			</span>
 			<span class="likes-count">
