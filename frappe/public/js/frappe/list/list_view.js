@@ -963,29 +963,29 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 	}
 
 	get_like_html(doc) {
-		const liked_by = JSON.parse(doc._liked_by || "[]");
-		const heart_class = liked_by.includes(frappe.session.user)
-			? "liked-by liked"
-			: "not-liked";
-		const title = liked_by.map((u) => frappe.user_info(u).fullname).join(", ");
+		// const liked_by = JSON.parse(doc._liked_by || "[]");
+		// const heart_class = liked_by.includes(frappe.session.user)
+			// ? "liked-by liked"
+			// : "not-liked";
+		// const title = liked_by.map((u) => frappe.user_info(u).fullname).join(", ");
 
-		const div = document.createElement("div");
-		div.innerHTML = `
-			<span class="hidden like-action ${heart_class}">
-				${frappe.utils.icon("heart", "sm", "like-icon")}
-			</span>
-			<span class="likes-count">
-				${liked_by.length > 99 ? __("99") + "+" : __(liked_by.length || "")}
-			</span>
-		`;
+		// const div = document.createElement("div");
+		// div.innerHTML = `
+			// <span class="hidden like-action ${heart_class}">
+				// ${frappe.utils.icon("heart", "sm", "like-icon")}
+			// </span>
+			// <span class="likes-count">
+				// ${liked_by.length > 99 ? __("99") + "+" : __(liked_by.length || "")}
+			// </span>
+		// `;
 
-		const like = div.querySelector(".like-action");
-		like.setAttribute("data-liked-by", doc._liked_by || "[]");
-		like.setAttribute("data-doctype", this.doctype);
-		like.setAttribute("data-name", doc.name);
-		like.setAttribute("title", title);
+		// const like = div.querySelector(".like-action");
+		// like.setAttribute("data-liked-by", doc._liked_by || "[]");
+		// like.setAttribute("data-doctype", this.doctype);
+		// like.setAttribute("data-name", doc.name);
+		// like.setAttribute("title", title);
 
-		return div.innerHTML;
+		// return div.innerHTML;
 	}
 
 	get_subject_html(doc) {

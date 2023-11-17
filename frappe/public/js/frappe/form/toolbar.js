@@ -362,25 +362,27 @@ frappe.ui.form.Toolbar = class Toolbar {
 		}
 
 		// go to field modal
-		this.page.add_menu_item(
-			__("Jump to field"),
-			function () {
-				me.show_jump_to_field_dialog();
-			},
-			true,
-			"Ctrl+J"
-		);
+		//postex
+		// this.page.add_menu_item(
+			// __("Jump to field"),
+			// function () {
+				// me.show_jump_to_field_dialog();
+			// },
+			// true,
+			// "Ctrl+J"
+		// );
 
 		// Linked With
-		if (!me.frm.meta.issingle) {
-			this.page.add_menu_item(
-				__("Links"),
-				function () {
-					me.show_linked_with();
-				},
-				true
-			);
-		}
+			//postex
+		// if (!me.frm.meta.issingle) {
+			// this.page.add_menu_item(
+				// __("Links"),
+				// function () {
+					// me.show_linked_with();
+				// },
+				// true
+			// );
+		// }
 
 		// duplicate
 		if (in_list(frappe.boot.user.can_create, me.frm.doctype) && !me.frm.meta.allow_copy) {
@@ -394,24 +396,24 @@ frappe.ui.form.Toolbar = class Toolbar {
 		}
 
 		// copy doc to clipboard
-		this.page.add_menu_item(
-			__("Copy to Clipboard"),
-			function () {
-				frappe.utils.copy_to_clipboard(JSON.stringify(me.frm.doc));
-			},
-			true
-		);
+		// this.page.add_menu_item(
+			// __("Copy to Clipboard"),
+			// function () {
+				// frappe.utils.copy_to_clipboard(JSON.stringify(me.frm.doc));
+			// },
+			// true
+		// );
 
 		// rename
-		if (this.can_rename()) {
-			this.page.add_menu_item(
-				__("Rename"),
-				function () {
-					me.frm.rename_doc();
-				},
-				true
-			);
-		}
+		// if (this.can_rename()) {
+			// this.page.add_menu_item(
+				// __("Rename"),
+				// function () {
+					// me.frm.rename_doc();
+				// },
+				// true
+			// );
+		// }
 
 		// reload
 		this.page.add_menu_item(
@@ -444,15 +446,15 @@ frappe.ui.form.Toolbar = class Toolbar {
 		this.make_customize_buttons();
 
 		// Auto Repeat
-		if (this.can_repeat()) {
-			this.page.add_menu_item(
-				__("Repeat"),
-				function () {
-					frappe.utils.new_auto_repeat_prompt(me.frm);
-				},
-				true
-			);
-		}
+		// if (this.can_repeat()) {
+			// this.page.add_menu_item(
+				// __("Repeat"),
+				// function () {
+					// frappe.utils.new_auto_repeat_prompt(me.frm);
+				// },
+				// true
+			// );
+		// }
 
 		// New
 		if (p[CREATE] && !this.frm.meta.issingle && !this.frm.meta.in_create) {

@@ -150,13 +150,13 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 		let me = this;
 
 		return [
-			{
-				label: __("Assign to me"),
-				fieldtype: "Check",
-				fieldname: "assign_to_me",
-				default: 0,
-				onchange: () => me.assign_to_me(),
-			},
+			// {
+				// label: __("Assign to me"),
+				// fieldtype: "Check",
+				// fieldname: "assign_to_me",
+				// default: 0,
+				// onchange: () => me.assign_to_me(),
+			// },
 			{
 				fieldtype: "MultiSelectPills",
 				fieldname: "assign_to",
@@ -176,6 +176,7 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 				label: __("Complete By"),
 				fieldtype: "Date",
 				fieldname: "date",
+				default: frappe.datetime.get_today(),
 			},
 			{
 				fieldtype: "Column Break",
@@ -198,10 +199,11 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 						label: __("High"),
 					},
 				],
+				 default: "Low"
 				// Pick up priority from the source document, if it exists and is available in ToDo
-				default: ["Low", "Medium", "High"].includes(
-					me.frm && me.frm.doc.priority ? me.frm.doc.priority : "Medium"
-				),
+				// default: ["Low", "Medium", "High"].includes(
+					// me.frm && me.frm.doc.priority ? me.frm.doc.priority : "Medium"
+				// ),
 			},
 			{
 				fieldtype: "Section Break",
