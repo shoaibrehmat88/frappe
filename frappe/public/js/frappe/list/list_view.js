@@ -969,7 +969,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 			// : "not-liked";
 		// const title = liked_by.map((u) => frappe.user_info(u).fullname).join(", ");
 
-		// const div = document.createElement("div");
+		 const div = document.createElement("div");
 		// div.innerHTML = `
 			// <span class="hidden like-action ${heart_class}">
 				// ${frappe.utils.icon("heart", "sm", "like-icon")}
@@ -985,7 +985,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		// like.setAttribute("data-name", doc.name);
 		// like.setAttribute("title", title);
 
-		// return div.innerHTML;
+		 return div.innerHTML;
 	}
 
 	get_subject_html(doc) {

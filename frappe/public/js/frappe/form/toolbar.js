@@ -512,9 +512,9 @@ frappe.ui.form.Toolbar = class Toolbar {
 		}
 	}
 
-	can_repeat() {
-		return this.frm.meta.allow_auto_repeat && !this.frm.is_new() && !this.frm.doc.auto_repeat;
-	}
+	//can_repeat() {
+	//	return this.frm.meta.allow_auto_repeat && !this.frm.is_new() && !this.frm.doc.auto_repeat;
+	//}
 	can_save() {
 		return this.get_docstatus() === 0;
 	}
