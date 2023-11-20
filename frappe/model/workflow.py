@@ -176,7 +176,13 @@ def validate_workflow(doc):
 		doc.set(workflow.workflow_state_field, next_state)
 
 	if not current_state:
-		current_state = workflow.states[0].state
+		if doc.doctype == 'Delivery Note':
+			if doc.is_return == 0:
+				current_state = workflow.states[0].state
+			else:
+				current_state = workflow.states[1].state
+		else:
+			current_state = workflow.states[0].state
 
 	state_row = [d for d in workflow.states if d.state == current_state]
 	if not state_row:
