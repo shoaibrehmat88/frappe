@@ -346,20 +346,20 @@ frappe.ui.form.Toolbar = class Toolbar {
 			}
 		}
 
-		// email
-		if (frappe.model.can_email(null, me.frm) && me.frm.doc.docstatus < 2) {
-			this.page.add_menu_item(
-				__("Email"),
-				function () {
-					me.frm.email_doc();
-				},
-				true,
-				{
-					shortcut: "Ctrl+E",
-					condition: () => !this.frm.is_new(),
-				}
-			);
-		}
+		// // email
+		// if (frappe.model.can_email(null, me.frm) && me.frm.doc.docstatus < 2) {
+		// 	this.page.add_menu_item(
+		// 		__("Email"),
+		// 		function () {
+		// 			me.frm.email_doc();
+		// 		},
+		// 		true,
+		// 		{
+		// 			shortcut: "Ctrl+E",
+		// 			condition: () => !this.frm.is_new(),
+		// 		}
+		// 	);
+		// }
 
 		// go to field modal
 		//postex
@@ -385,15 +385,15 @@ frappe.ui.form.Toolbar = class Toolbar {
 		// }
 
 		// duplicate
-		if (in_list(frappe.boot.user.can_create, me.frm.doctype) && !me.frm.meta.allow_copy) {
-			this.page.add_menu_item(
-				__("Duplicate"),
-				function () {
-					me.frm.copy_doc();
-				},
-				true
-			);
-		}
+		// if (in_list(frappe.boot.user.can_create, me.frm.doctype) && !me.frm.meta.allow_copy) {
+		// 	this.page.add_menu_item(
+		// 		__("Duplicate"),
+		// 		function () {
+		// 			me.frm.copy_doc();
+		// 		},
+		// 		true
+		// 	);
+		// }
 
 		// copy doc to clipboard
 		// this.page.add_menu_item(
@@ -443,7 +443,7 @@ frappe.ui.form.Toolbar = class Toolbar {
 			);
 		}
 
-		this.make_customize_buttons();
+		// this.make_customize_buttons();
 
 		// Auto Repeat
 		// if (this.can_repeat()) {
