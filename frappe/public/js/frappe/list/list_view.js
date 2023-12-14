@@ -1032,7 +1032,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 	}
 
 	get_indicator_html(doc, show_workflow_state) {
-		const indicator = frappe.get_indicator(doc, this.doctype, show_workflow_state);
+		const indicator = frappe.get_indicator(doc, this.doctype, show_workflow_state);		
 		// sequence is important
 		const docstatus_description = [
 			__("Document is in draft state"),

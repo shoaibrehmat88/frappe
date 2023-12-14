@@ -83,17 +83,28 @@ frappe.ui.form.AssignTo = class AssignTo {
 			});
 	}
 };
-
+var wh_users = [];
 frappe.ui.form.AssignToDialog = class AssignToDialog {
 	constructor(opts) {
 		$.extend(this, opts);
-
+		
 		this.make();
 		this.set_description_from_doc();
+		let res = [];
+		frappe.db.get_list('User Permission',{filters:{'user':frappe.user.name,'is_default':0,'allow':'Warehouse'},fields:['for_value']}).then((response) => {
+			response.forEach(r => {
+				res.push(r.for_value);
+			})
+			frappe.db.get_list('User Permission',{filters:{'user':['!=',frappe.user.name],'is_default':0,'allow':'Warehouse',for_value:['in',res]},fields:['user']}).then((response) => {
+				response.forEach(r => {
+					wh_users.push(r.user);
+				})
+			});	
+		});
+
 	}
 	make() {
 		let me = this;
-
 		me.dialog = new frappe.ui.Dialog({
 			title: __("Add to ToDo"),
 			fields: me.get_fields(),
@@ -148,7 +159,6 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 	}
 	get_fields() {
 		let me = this;
-
 		return [
 			// {
 				// label: __("Assign to me"),
@@ -164,8 +174,7 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 				reqd: true,
 				get_data: function (txt) {
 					return frappe.db.get_link_options("User", txt, {
-						user_type: "System User",
-						enabled: 1,
+						name:['in',wh_users]
 					});
 				},
 			},
@@ -214,6 +223,7 @@ frappe.ui.form.AssignToDialog = class AssignToDialog {
 				fieldname: "description",
 			},
 		];
+
 	}
 };
 
