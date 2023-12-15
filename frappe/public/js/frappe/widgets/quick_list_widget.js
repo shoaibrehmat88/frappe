@@ -19,7 +19,7 @@ export default class QuickListWidget extends Widget {
 	set_actions() {
 		if (this.in_customize_mode) return;
 
-		this.setup_add_new_button();
+		// this.setup_add_new_button();
 		this.setup_refresh_list_button();
 		this.setup_filter_list_button();
 	}
