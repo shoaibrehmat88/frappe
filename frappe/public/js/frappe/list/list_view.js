@@ -88,7 +88,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		this.sort_order = this.view_user_settings.sort_order || this.sort_order || "desc";
 
 		// build menu items
-		// this.menu_items = this.menu_items.concat(this.get_menu_items());
+		this.menu_items = this.menu_items.concat(this.get_menu_items());
 
 		// set filters from view_user_settings or list_settings
 		if (Array.isArray(this.view_user_settings.filters)) {
@@ -2038,6 +2038,3 @@ frappe.get_list_view = (doctype) => {
 	let route = `List/${doctype}/List`;
 	return frappe.views.list_view[route];
 };
-jQuery(document).ready(function(){
-	jQuery('div.menu-btn-group').hide();
-});

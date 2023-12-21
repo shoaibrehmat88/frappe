@@ -26,6 +26,10 @@ def get():
 		controller = get_controller(args.doctype)
 		data = compress(controller.get_list(args))
 	else:
+		user = frappe.session.user
+		role_profile_name = frappe.db.get_value('User',user,"role_profile_name")
+		if role_profile_name in ["Outbound Picker","Outbound Packer","Pick & Pack","Inbound Incharge","Outbound Dispatcher"]:
+			args.filters.append({"_assign":['like',f'%{user}%']})
 		data = compress(execute(**args), args=args)
 	return data
 

@@ -947,7 +947,7 @@ def user_query(doctype, txt, searchfield, start, page_len, filters):
 
 	txt = f"%{txt}%"
 	return frappe.db.sql(
-		"""SELECT `name`, CONCAT_WS(' ', first_name, middle_name, last_name)
+		"""SELECT `name`, CONCAT_WS(' ', first_name, middle_name, last_name,role_profile_name)
 		FROM `tabUser`
 		WHERE `enabled`=1
 			{user_type_condition}
