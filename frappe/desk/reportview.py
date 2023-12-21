@@ -28,7 +28,7 @@ def get():
 	else:
 		user = frappe.session.user
 		role_profile_name = frappe.db.get_value('User',user,"role_profile_name")
-		if role_profile_name in ["Outbound Picker","Outbound Packer","Pick & Pack","Inbound Incharge","Outbound Dispatcher"]:
+		if role_profile_name in ["Outbound Picker","Outbound Packer","Pick & Pack","Inbound Incharge","Outbound Dispatcher","Stock Keeper"]:
 			args.filters.append({"_assign":['like',f'%{user}%']})
 		data = compress(execute(**args), args=args)
 	return data
