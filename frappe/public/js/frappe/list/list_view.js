@@ -88,7 +88,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		this.sort_order = this.view_user_settings.sort_order || this.sort_order || "desc";
 
 		// build menu items
-		this.menu_items = this.menu_items.concat(this.get_menu_items());
+		// this.menu_items = this.menu_items.concat(this.get_menu_items());
 
 		// set filters from view_user_settings or list_settings
 		if (Array.isArray(this.view_user_settings.filters)) {
@@ -1591,79 +1591,79 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		const items = [];
 
 		if (frappe.model.can_import(doctype, null, this.meta)) {
-			items.push({
-				label: __("Import", null, "Button in list view menu"),
-				action: () =>
-					frappe.set_route("list", "data-import", {
-						reference_doctype: doctype,
-					}),
-				standard: true,
-			});
+			// items.push({
+			// 	label: __("Import", null, "Button in list view menu"),
+			// 	action: () =>
+			// 		frappe.set_route("list", "data-import", {
+			// 			reference_doctype: doctype,
+			// 		}),
+			// 	standard: true,
+			// });
 		}
 
 		if (frappe.model.can_set_user_permissions(doctype)) {
-			items.push({
-				label: __("User Permissions", null, "Button in list view menu"),
-				action: () =>
-					frappe.set_route("list", "user-permission", {
-						allow: doctype,
-					}),
-				standard: true,
-			});
+			// items.push({
+			// 	label: __("User Permissions", null, "Button in list view menu"),
+			// 	action: () =>
+			// 		frappe.set_route("list", "user-permission", {
+			// 			allow: doctype,
+			// 		}),
+			// 	standard: true,
+			// });
 		}
 
 		if (frappe.user_roles.includes("System Manager")) {
-			items.push({
-				label: __("Role Permissions Manager", null, "Button in list view menu"),
-				action: () =>
-					frappe.set_route("permission-manager", {
-						doctype,
-					}),
-				standard: true,
-			});
+			// items.push({
+			// 	label: __("Role Permissions Manager", null, "Button in list view menu"),
+			// 	action: () =>
+			// 		frappe.set_route("permission-manager", {
+			// 			doctype,
+			// 		}),
+			// 	standard: true,
+			// });
 		}
 
 		if (
 			frappe.model.can_create("Custom Field") &&
 			frappe.model.can_create("Property Setter")
 		) {
-			items.push({
-				label: __("Customize", null, "Button in list view menu"),
-				action: () => {
-					if (!this.meta) return;
-					if (this.meta.custom) {
-						frappe.set_route("form", "doctype", doctype);
-					} else if (!this.meta.custom) {
-						frappe.set_route("form", "customize-form", {
-							doc_type: doctype,
-						});
-					}
-				},
-				standard: true,
-				shortcut: "Ctrl+J",
-			});
+			// items.push({
+			// 	label: __("Customize", null, "Button in list view menu"),
+			// 	action: () => {
+			// 		if (!this.meta) return;
+			// 		if (this.meta.custom) {
+			// 			frappe.set_route("form", "doctype", doctype);
+			// 		} else if (!this.meta.custom) {
+			// 			frappe.set_route("form", "customize-form", {
+			// 				doc_type: doctype,
+			// 			});
+			// 		}
+			// 	},
+			// 	standard: true,
+			// 	shortcut: "Ctrl+J",
+			// });
 		}
 
-		items.push({
-			label: __("Toggle Sidebar", null, "Button in list view menu"),
-			action: () => this.toggle_side_bar(),
-			condition: () => !this.hide_sidebar,
-			standard: true,
-			shortcut: "Ctrl+K",
-		});
+		// items.push({
+		// 	label: __("Toggle Sidebar", null, "Button in list view menu"),
+		// 	action: () => this.toggle_side_bar(),
+		// 	condition: () => !this.hide_sidebar,
+		// 	standard: true,
+		// 	shortcut: "Ctrl+K",
+		// });
 
 		if (frappe.user.has_role("System Manager") && frappe.boot.developer_mode === 1) {
 			// edit doctype
-			items.push({
-				label: __("Edit DocType", null, "Button in list view menu"),
-				action: () => frappe.set_route("form", "doctype", doctype),
-				standard: true,
-			});
+			// items.push({
+			// 	label: __("Edit DocType", null, "Button in list view menu"),
+			// 	action: () => frappe.set_route("form", "doctype", doctype),
+			// 	standard: true,
+			// });
 		}
 
 		if (frappe.user.has_role("System Manager")) {
 			if (this.get_view_settings) {
-				items.push(this.get_view_settings());
+				// items.push(this.get_view_settings());
 			}
 		}
 
@@ -1671,11 +1671,12 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 	}
 
 	get_view_settings() {
-		return {
-			label: __("List Settings", null, "Button in list view menu"),
-			action: () => this.show_list_settings(),
-			standard: true,
-		};
+		// return {
+		// 	label: __("List Settings", null, "Button in list view menu"),
+		// 	action: () => this.show_list_settings(),
+		// 	standard: true,
+		// };
+		return '';
 	}
 
 	show_list_settings() {
@@ -2037,3 +2038,6 @@ frappe.get_list_view = (doctype) => {
 	let route = `List/${doctype}/List`;
 	return frappe.views.list_view[route];
 };
+jQuery(document).ready(function(){
+	jQuery('div.menu-btn-group').hide();
+});

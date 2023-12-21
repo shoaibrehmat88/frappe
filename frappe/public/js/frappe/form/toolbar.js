@@ -443,7 +443,7 @@ frappe.ui.form.Toolbar = class Toolbar {
 			);
 		}
 
-		// this.make_customize_buttons();
+		this.make_customize_buttons();
 
 		// Auto Repeat
 		// if (this.can_repeat()) {

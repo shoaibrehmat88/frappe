@@ -202,18 +202,18 @@ frappe.views.BaseList = class BaseList {
 			__("List View") __("Report View") __("Dashboard View") __("Gantt View"),
 			__("Kanban View") __("Calendar View") __("Image View") __("Inbox View"),
 			__("Tree View") __("Map View") */
-			this.views_menu = this.page.add_custom_button_group(
-				__("{0} View", [this.view_name]),
-				icon_map[this.view_name] || "list"
-			);
-			this.views_list = new frappe.views.ListViewSelect({
-				doctype: this.doctype,
-				parent: this.views_menu,
-				page: this.page,
-				list_view: this,
-				sidebar: this.list_sidebar,
-				icon_map: icon_map,
-			});
+			// this.views_menu = this.page.add_custom_button_group(
+			// 	__("{0} View", [this.view_name]),
+			// 	icon_map[this.view_name] || "list"
+			// );
+			// this.views_list = new frappe.views.ListViewSelect({
+			// 	doctype: this.doctype,
+			// 	parent: this.views_menu,
+			// 	page: this.page,
+			// 	list_view: this,
+			// 	sidebar: this.list_sidebar,
+			// 	icon_map: icon_map,
+			// });
 		}
 	}
 
