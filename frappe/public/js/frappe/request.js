@@ -225,20 +225,20 @@ frappe.request.call = function (opts) {
 
 	var exception_handlers = {
 		QueryTimeoutError: function () {
-			frappe.utils.play_sound("error");
-			frappe.msgprint({
-				title: __("Request Timeout"),
-				indicator: "red",
-				message: __("Server was too busy to process this request. Please try again."),
-			});
+			// frappe.utils.play_sound("error");
+			// frappe.msgprint({
+			// 	title: __("Request Timeout"),
+			// 	indicator: "red",
+			// 	message: __("Server was too busy to process this request. Please try again."),
+			// });
 		},
 		QueryDeadlockError: function () {
-			frappe.utils.play_sound("error");
-			frappe.msgprint({
-				title: __("Deadlock Occurred"),
-				indicator: "red",
-				message: __("Server was too busy to process this request. Please try again."),
-			});
+			// frappe.utils.play_sound("error");
+			// frappe.msgprint({
+			// 	title: __("Deadlock Occurred"),
+			// 	indicator: "red",
+			// 	message: __("Server was too busy to process this request. Please try again."),
+			// });
 		},
 	};
 
