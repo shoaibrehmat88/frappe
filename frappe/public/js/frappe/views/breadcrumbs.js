@@ -83,12 +83,14 @@ frappe.breadcrumbs = {
 	},
 
 	append_breadcrumb_element(route, label) {
-		const el = document.createElement("li");
-		const a = document.createElement("a");
-		a.href = route;
-		a.innerText = label;
-		el.appendChild(a);
-		this.$breadcrumbs.append(el);
+		if (label != 'Stock' && label != 'Selling'){
+			const el = document.createElement("li");
+			const a = document.createElement("a");
+			a.href = route;
+			a.innerText = label;
+			el.appendChild(a);
+			this.$breadcrumbs.append(el);
+		}
 	},
 
 	get last_route() {

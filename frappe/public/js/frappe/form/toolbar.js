@@ -328,21 +328,21 @@ frappe.ui.form.Toolbar = class Toolbar {
 			(allow_print_for_draft && docstatus == 0)
 		) {
 			if (frappe.model.can_print(null, me.frm) && !this.frm.meta.issingle) {
-				this.page.add_menu_item(
-					__("Print"),
-					function () {
-						me.frm.print_doc();
-					},
-					true
-				);
-				this.print_icon = this.page.add_action_icon(
-					"printer",
-					function () {
-						me.frm.print_doc();
-					},
-					"",
-					__("Print")
-				);
+				// this.page.add_menu_item(
+				// 	__("Print"),
+				// 	function () {
+				// 		me.frm.print_doc();
+				// 	},
+				// 	true
+				// );
+				// this.print_icon = this.page.add_action_icon(
+				// 	"printer",
+				// 	function () {
+				// 		me.frm.print_doc();
+				// 	},
+				// 	"",
+				// 	__("Print")
+				// );
 			}
 		}
 
@@ -415,7 +415,6 @@ frappe.ui.form.Toolbar = class Toolbar {
 			// );
 		// }
 
-		// reload
 		this.page.add_menu_item(
 			__("Reload"),
 			function () {
@@ -443,7 +442,7 @@ frappe.ui.form.Toolbar = class Toolbar {
 			);
 		}
 
-		this.make_customize_buttons();
+		// this.make_customize_buttons();
 
 		// Auto Repeat
 		// if (this.can_repeat()) {
@@ -457,19 +456,19 @@ frappe.ui.form.Toolbar = class Toolbar {
 		// }
 
 		// New
-		if (p[CREATE] && !this.frm.meta.issingle && !this.frm.meta.in_create) {
-			this.page.add_menu_item(
-				__("New {0}", [__(me.frm.doctype)]),
-				function () {
-					frappe.new_doc(me.frm.doctype, true);
-				},
-				true,
-				{
-					shortcut: "Ctrl+B",
-					condition: () => !this.frm.is_new(),
-				}
-			);
-		}
+		// if (p[CREATE] && !this.frm.meta.issingle && !this.frm.meta.in_create) {
+		// 	this.page.add_menu_item(
+		// 		__("New {0}", [__(me.frm.doctype)]),
+		// 		function () {
+		// 			frappe.new_doc(me.frm.doctype, true);
+		// 		},
+		// 		true,
+		// 		{
+		// 			shortcut: "Ctrl+B",
+		// 			condition: () => !this.frm.is_new(),
+		// 		}
+		// 	);
+		// }
 	}
 
 	make_customize_buttons() {
