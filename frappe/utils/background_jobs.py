@@ -47,6 +47,8 @@ def get_queues_timeout():
 		"short": default_timeout,
 		"default": default_timeout,
 		"long": 1500,
+		"sle_short":1500,
+		"sle_short1" : 1500,
 		**{
 			worker: config.get("timeout", default_timeout)
 			for worker, config in custom_workers_config.items()
