@@ -182,7 +182,8 @@ def send_mail(email_queue_name, is_background_task=False, smtp_server_instance: 
 	This provides a way to make sending mail as a background job.
 	"""
 	record = EmailQueue.find(email_queue_name)
-	record.send(is_background_task=is_background_task, smtp_server_instance=smtp_server_instance)
+	record.send()
+	#record.send(is_background_task=is_background_task, smtp_server_instance=smtp_server_instance)
 
 
 class SendMailContext:
