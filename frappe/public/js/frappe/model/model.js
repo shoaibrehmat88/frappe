@@ -309,6 +309,12 @@ $.extend(frappe.model, {
 	},
 
 	unscrub: function (txt) {
+		if(txt == 'custom_cn'){
+			return 'CN#';
+		}
+		if(txt == 'custom_location'){
+			return 'Location';
+		}
 		return __(txt || "")
 			.replace(/-|_/g, " ")
 			.replace(/\w*/g, function (keywords) {

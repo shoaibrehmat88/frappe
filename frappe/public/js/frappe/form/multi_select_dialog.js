@@ -83,7 +83,7 @@ frappe.ui.form.MultiSelectDialog = class MultiSelectDialog {
 			fields: this.fields,
 			size: this.size,
 			primary_action_label: this.primary_action_label || __("Get Items"),
-			secondary_action_label: __("Make {0}", [__(this.doctype)]),
+			// secondary_action_label: __("Make {0}", [__(this.doctype)]),
 			primary_action: () => {
 				let filters_data = this.get_custom_filters();
 				const data_values = cur_dialog.get_values(); // to pass values of data fields
@@ -99,7 +99,7 @@ frappe.ui.form.MultiSelectDialog = class MultiSelectDialog {
 					filtered_children,
 				});
 			},
-			secondary_action: this.make_new_document.bind(this),
+			// secondary_action: this.make_new_document.bind(this),
 		});
 
 		if (this.add_filters_group) {
@@ -427,6 +427,7 @@ frappe.ui.form.MultiSelectDialog = class MultiSelectDialog {
 	}
 
 	get_datatable_columns() {
+		if (this.columns) return this.columns;
 		if (this.get_query && this.get_query().query && this.columns) return this.columns;
 
 		if (Array.isArray(this.setters))
