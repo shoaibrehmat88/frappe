@@ -184,6 +184,14 @@ def validate_workflow(doc):
 		else:
 			current_state = workflow.states[0].state
 
+		if doc.doctype == 'Material Request':
+			if doc.type == 'Pick List Request':
+				current_state = workflow.states[0].state
+			elif doc.type == 'Put Away GRN':
+				current_state = workflow.states[1].state
+		else:
+			current_state = workflow.states[0].state
+
 	state_row = [d for d in workflow.states if d.state == current_state]
 	if not state_row:
 		frappe.throw(

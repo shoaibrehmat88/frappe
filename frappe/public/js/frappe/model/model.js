@@ -315,6 +315,9 @@ $.extend(frappe.model, {
 		if(txt == 'custom_location'){
 			return 'Location';
 		}
+		if(txt == 'custom_main_location'){
+			return 'Main Location';
+		}
 		return __(txt || "")
 			.replace(/-|_/g, " ")
 			.replace(/\w*/g, function (keywords) {
