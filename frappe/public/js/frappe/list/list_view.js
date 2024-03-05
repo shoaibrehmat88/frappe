@@ -398,7 +398,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		// Screen with low density no of columns 4
 		// Screen with medium density no of columns 6
 		// Screen with high density no of columns 8
-		let total_fields = 6;
+		let total_fields = 8;
 
 		if (window.innerWidth <= 1366) {
 			total_fields = 4;
@@ -1627,21 +1627,21 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 			frappe.model.can_create("Custom Field") &&
 			frappe.model.can_create("Property Setter")
 		) {
-			// items.push({
-			// 	label: __("Customize", null, "Button in list view menu"),
-			// 	action: () => {
-			// 		if (!this.meta) return;
-			// 		if (this.meta.custom) {
-			// 			frappe.set_route("form", "doctype", doctype);
-			// 		} else if (!this.meta.custom) {
-			// 			frappe.set_route("form", "customize-form", {
-			// 				doc_type: doctype,
-			// 			});
-			// 		}
-			// 	},
-			// 	standard: true,
-			// 	shortcut: "Ctrl+J",
-			// });
+			items.push({
+				label: __("Customize", null, "Button in list view menu"),
+				action: () => {
+					if (!this.meta) return;
+					if (this.meta.custom) {
+						frappe.set_route("form", "doctype", doctype);
+					} else if (!this.meta.custom) {
+						frappe.set_route("form", "customize-form", {
+							doc_type: doctype,
+						});
+					}
+				},
+				standard: true,
+				shortcut: "Ctrl+J",
+			});
 		}
 
 		// items.push({
@@ -1654,11 +1654,11 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 
 		if (frappe.user.has_role("System Manager") && frappe.boot.developer_mode === 1) {
 			// edit doctype
-			// items.push({
-			// 	label: __("Edit DocType", null, "Button in list view menu"),
-			// 	action: () => frappe.set_route("form", "doctype", doctype),
-			// 	standard: true,
-			// });
+			items.push({
+				label: __("Edit DocType", null, "Button in list view menu"),
+				action: () => frappe.set_route("form", "doctype", doctype),
+				standard: true,
+			});
 		}
 
 		if (frappe.user.has_role("System Manager")) {

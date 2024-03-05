@@ -5,7 +5,7 @@
 		</a>
 		<ul class="nav navbar-nav d-none d-sm-flex" id="navbar-breadcrumbs"></ul>
 		<div class="collapse navbar-collapse justify-content-end">
-			<form class="form-inline fill-width justify-content-end" role="search" onsubmit="return false;" style="display:none;">
+			<form class="form-inline fill-width justify-content-end" role="search" onsubmit="return false;" style="/*display:none;*/">
 				{% if (frappe.boot.read_only) { %}
 					<span class="indicator-pill yellow no-indicator-dot" title="{%= __("Your site is getting upgraded.") %}">
 						{%= __("Read Only Mode") %}
