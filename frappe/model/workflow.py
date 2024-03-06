@@ -182,7 +182,7 @@ def validate_workflow(doc):
 			else:
 				current_state = workflow.states[1].state
 		elif doc.doctype == 'Material Request':
-			if doc.type == 'Pick List Request':
+			if doc.type == 'Pick & Pack':
 				current_state = workflow.states[0].state
 			elif doc.type == 'Put Away GRN':
 				current_state = workflow.states[1].state
