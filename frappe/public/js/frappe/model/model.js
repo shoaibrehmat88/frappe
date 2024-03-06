@@ -312,6 +312,9 @@ $.extend(frappe.model, {
 		if(txt == 'custom_cn'){
 			return 'CN#';
 		}
+		if (txt == "custom_store_order_ref_id") {
+            return "Store Order Ref ID";
+		}
 		if(txt == 'custom_location'){
 			return 'Location';
 		}
