@@ -1004,6 +1004,7 @@ export default class Grid {
 
 	set_multiple_add(link, qty) {
 		if (this.multiple_set) return;
+		if (!this.frm.get_docfield(this.df.fieldname).allow_bulk_edit) return
 
 		var link_field = frappe.meta.get_docfield(this.df.options, link);
 		var btn = $(this.wrapper).find(".grid-add-multiple-rows");

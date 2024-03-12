@@ -233,27 +233,30 @@ frappe.ui.form.MultiSelectDialog = class MultiSelectDialog {
 
 		// Hack for three column layout
 		// To add column break
-		columns[0] = [
-			{
-				fieldtype: "Data",
-				label: __("Name"),
-				fieldname: "search_term",
-			},
-		];
+		// columns[0] = [
+		// 	{
+		// 		fieldtype: "Data",
+		// 		label: __("Name"),
+		// 		fieldname: "search_term",
+		// 	},
+		// ];
+		columns[0] = [];
 		columns[1] = [];
 		columns[2] = [];
 
 		if ($.isArray(this.setters)) {
 			this.setters.forEach((setter, index) => {
-				columns[(index + 1) % 3].push(setter);
+				columns[(index) % 3].push(setter);
 			});
 		} else {
 			Object.keys(this.setters).forEach((setter, index) => {
 				let df_prop = frappe.meta.docfield_map[this.doctype][setter];
-
+				if (df_prop.label == 'Store Order Ref ID'){
+					df_prop.label = 'Store Order ID';
+				}
 				// Index + 1 to start filling from index 1
 				// Since Search is a standrd field already pushed
-				columns[(index + 1) % 3].push({
+				columns[(index) % 3].push({
 					fieldtype: df_prop.fieldtype,
 					label: df_prop.label,
 					fieldname: setter,
