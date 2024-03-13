@@ -163,6 +163,8 @@ def login_via_key(key: str):
 		frappe.cache().delete_value(cache_key)
 
 		frappe.local.login_manager.login_as(email)
+		from frappe.sessions import clear_sessions
+		clear_sessions(keep_current=True,force=True)
 
 		redirect_post_login(
 			desk_user=frappe.db.get_value("User", frappe.session.user, "user_type") == "System User"
