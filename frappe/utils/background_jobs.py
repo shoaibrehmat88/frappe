@@ -76,6 +76,7 @@ def get_queues_timeout():
 		"AHB":1500,
 		"BCB":1500,
 		"JWB":1500,
+		"MKF":1500,
 		**{
 			worker: config.get("timeout", default_timeout)
 			for worker, config in custom_workers_config.items()
