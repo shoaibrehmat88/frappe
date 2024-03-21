@@ -147,11 +147,7 @@
    "type": "Link"
   }
  ],
-<<<<<<< HEAD
- "modified": "2023-11-17 04:31:52.850821",
-=======
  "modified": "2023-11-15 10:55:36.102223",
->>>>>>> a881b6b099b (changes)
  "modified_by": "Administrator",
  "module": "Core",
  "name": "Users",
