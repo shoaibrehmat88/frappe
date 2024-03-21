@@ -1027,10 +1027,15 @@ export default class GridRow {
 			this.row.toggleClass("editable-row", true);
 
 			// setup controls
-			this.columns_list.forEach(function (column) {
-				me.make_control(column);
-				column.static_area.toggle(false);
-				column.field_area.toggle(true);
+			this.columns_list.forEach(function (column) {	
+				console.log(column.df.fieldname,column.df.fieldtype);			
+				if (column.df.fieldtype == 'HTML' && column.df.fieldname == 'product_image'){
+					// console.log('pass');
+				}else{
+					me.make_control(column);
+					column.static_area.toggle(false);
+					column.field_area.toggle(true);
+				}
 			});
 
 			frappe.ui.form.editable_row = this;
@@ -1060,8 +1065,9 @@ export default class GridRow {
 	}
 
 	make_control(column) {
+		// console.log(column);
 		if (column.field) return;
-
+		// console.log('1');
 		var me = this,
 			parent = column.field_area,
 			df = column.df;
