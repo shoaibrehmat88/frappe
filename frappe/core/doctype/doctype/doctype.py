@@ -1502,6 +1502,7 @@ def validate_fields(meta):
 def get_fields_not_allowed_in_list_view(meta) -> list[str]:
 	not_allowed_in_list_view = list(copy.copy(no_value_fields))
 	not_allowed_in_list_view.append("Attach Image")
+	not_allowed_in_list_view.remove("Image")
 	if meta.istable:
 		not_allowed_in_list_view.remove("Button")
 		not_allowed_in_list_view.remove("HTML")
