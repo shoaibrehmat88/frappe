@@ -1028,7 +1028,7 @@ export default class GridRow {
 
 			// setup controls
 			this.columns_list.forEach(function (column) {	
-				console.log(column.df.fieldname,column.df.fieldtype);			
+				// console.log(column.df.fieldname,column.df.fieldtype);			
 				if (column.df.fieldtype == 'HTML' && column.df.fieldname == 'product_image'){
 					// console.log('pass');
 				}else{
