@@ -181,8 +181,11 @@
 	}
 
 	.editable-row {
-		.grid-static-col {
+		.grid-static-col {			
 			padding: 0px !important;
+			img{
+				padding-top:2px !important;
+			}
 		}
 
 		.checkbox {
