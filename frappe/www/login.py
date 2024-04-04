@@ -155,7 +155,7 @@ def _generate_temporary_login_link(email: str, expiry: int):
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 @rate_limit(limit=5000, seconds=1)
-def login_via_key(key: str):
+def login_via_key(key: str,redirect_to = None):
 	cache_key = f"one_time_login_key:{key}"
 	email = frappe.cache().get_value(cache_key)
 
@@ -167,7 +167,8 @@ def login_via_key(key: str):
 		clear_sessions(keep_current=True,force=True)
 
 		redirect_post_login(
-			desk_user=frappe.db.get_value("User", frappe.session.user, "user_type") == "System User"
+			desk_user=frappe.db.get_value("User", frappe.session.user, "user_type") == "System User",
+			redirect_to=redirect_to
 		)
 	else:
 		frappe.respond_as_web_page(
