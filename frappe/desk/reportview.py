@@ -29,7 +29,9 @@ def get():
 		user = frappe.session.user
 		role_profile_name = frappe.db.get_value('User',user,"role_profile_name")
 		if role_profile_name in ["Outbound Picker","Outbound Packer","Pick & Pack","Inbound Incharge","Outbound Dispatcher","Stock Keeper"]:
-			args.filters.append({"_assign":['like',f'%{user}%']})
+			args.or_filters = []
+			args.or_filters.append({"_assign":['like',f'%{user}%']})
+			args.or_filters.append({"owner":['=',f'{user}']})
 		data = compress(execute(**args), args=args)
 	return data
 
