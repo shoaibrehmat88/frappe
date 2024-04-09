@@ -22,6 +22,9 @@ from frappe.utils import add_user_info, cstr, format_duration
 def get():
 	args = get_form_params()
 	# If virtual doctype get data from controller het_list method
+	if args.doctype == 'Stock Entry':
+		if 'docstatus' not in args.fields:
+			args.fields.append('docstatus')
 	if is_virtual_doctype(args.doctype):
 		controller = get_controller(args.doctype)
 		data = compress(controller.get_list(args))
