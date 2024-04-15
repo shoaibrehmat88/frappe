@@ -673,7 +673,7 @@
   },
   {
    "fieldname": "branch",
-   "fieldtype": "Data",
+   "fieldtype": "Long Text",
    "label": "Branch"
   }
  ],
@@ -737,7 +737,7 @@
    "link_fieldname": "user"
   }
  ],
- "modified": "2023-11-22 14:08:24.167669",
+ "modified": "2024-04-15 18:47:57.118866",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
@@ -770,8 +770,9 @@
  ],
  "quick_entry": 1,
  "route": "user",
- "search_fields": "full_name",
+ "search_fields": "full_name,role_profile_name",
  "show_name_in_global_search": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
