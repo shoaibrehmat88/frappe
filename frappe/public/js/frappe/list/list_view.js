@@ -135,7 +135,13 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 	}
 
 	set_actions_menu_items() {
-		this.actions_menu_items = this.get_actions_menu_items();
+		var assignTo = true;
+		frappe.db.get_value('User',frappe.session.user,'role_profile_name').then((response) => {
+			if(response.role_profile_name != 'Picker'){
+				assignTo = false;
+			}
+		})
+		this.actions_menu_items = this.get_actions_menu_items(assignTo);
 		this.workflow_action_menu_items = this.get_workflow_action_menu_items();
 		this.workflow_action_items = {};
 
@@ -1740,7 +1746,7 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 			});
 	}
 
-	get_actions_menu_items() {
+	get_actions_menu_items(assignTo = True) {
 		const doctype = this.doctype;
 		const actions_menu_items = [];
 		const bulk_operations = new BulkOperations({ doctype: this.doctype });
@@ -1948,8 +1954,9 @@ frappe.views.ListView = class ListView extends frappe.views.BaseList {
 		// actions_menu_items.push(bulk_export());
 
 		// bulk assignment
-		actions_menu_items.push(bulk_assignment());
-
+		if (assignTo == true){
+			actions_menu_items.push(bulk_assignment());
+		}
 		// actions_menu_items.push(bulk_assignment_rule());
 
 		// actions_menu_items.push(bulk_add_tags());
