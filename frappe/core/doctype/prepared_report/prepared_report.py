@@ -40,7 +40,7 @@ class PreparedReport(Document):
 	def after_insert(self):
 		enqueue(
 			generate_report,
-			queue="long",
+			queue="default",
 			prepared_report=self.name,
 			timeout=1500,
 			enqueue_after_commit=True,
