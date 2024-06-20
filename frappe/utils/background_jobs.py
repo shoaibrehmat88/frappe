@@ -59,6 +59,16 @@ def get_queues_timeout():
 		"q8":1500,
 		"q9":1500,
 		"q10":1500,
+		"q11":1500,
+		"q12":1500,
+		"q13":1500,
+		"q14":1500,
+		"q15":1500,
+		"q16":1500,
+		"q17":1500,
+		"q18":1500,
+		"q19":1500,
+		"q20":1500,
 		**{
 			worker: config.get("timeout", default_timeout)
 			for worker, config in custom_workers_config.items()
