@@ -190,6 +190,7 @@ def search_widget(
 			# 2 is the index of _relevance column
 			order_by = f"`tab{doctype}`.idx desc, {order_by_based_on_meta}"
 
+
 			if not meta.translated_doctype:
 				_txt = frappe.db.escape((txt or "").replace("%", "").replace("@", ""))
 				_relevance = f"(1 / nullif(locate({_txt}, `tab{doctype}`.`name`), 0))"
@@ -200,6 +201,9 @@ def search_widget(
 				elif frappe.db.db_type == "postgres":
 					# Since we are sorting by alias postgres needs to know number of column we are sorting
 					order_by = f"{len(formatted_fields)} desc nulls last, {order_by}"
+
+			if doctype in ["Delivery Note"]:
+				order_by = " `tabDelivery Note`.creation desc "
 
 			ignore_permissions = (
 				True
@@ -241,7 +245,8 @@ def search_widget(
 			# Sorting the values array so that relevant results always come first
 			# This will first bring elements on top in which query is a prefix of element
 			# Then it will bring the rest of the elements and sort them in lexicographical order
-			values = sorted(values, key=lambda x: relevance_sorter(x, txt, as_dict))
+			if doctype not in ["Delivery Note","Purchase Receipt","Purchase Order"]:
+				values = sorted(values, key=lambda x: relevance_sorter(x, txt, as_dict))
 
 			# remove _relevance from results
 			if not meta.translated_doctype:
