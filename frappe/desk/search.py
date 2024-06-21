@@ -202,8 +202,8 @@ def search_widget(
 					# Since we are sorting by alias postgres needs to know number of column we are sorting
 					order_by = f"{len(formatted_fields)} desc nulls last, {order_by}"
 
-			if doctype in ["Delivery Note"]:
-				order_by = " `tabDelivery Note`.creation desc "
+			if doctype in ["Delivery Note","Purchase Receipt","Stock Entry"]:
+				order_by = f" `tab{doctype}`.creation desc "
 
 			ignore_permissions = (
 				True
@@ -245,7 +245,7 @@ def search_widget(
 			# Sorting the values array so that relevant results always come first
 			# This will first bring elements on top in which query is a prefix of element
 			# Then it will bring the rest of the elements and sort them in lexicographical order
-			if doctype not in ["Delivery Note","Purchase Receipt","Purchase Order"]:
+			if doctype not in ["Delivery Note","Purchase Receipt","Purchase Order",'Stock Entry']:
 				values = sorted(values, key=lambda x: relevance_sorter(x, txt, as_dict))
 
 			# remove _relevance from results
