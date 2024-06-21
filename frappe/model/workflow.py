@@ -368,5 +368,8 @@ def set_workflow_state_on_action(doc, workflow_name, action):
 	docstatus = action_map[action]
 	for state in workflow.states:
 		if state.doc_status == docstatus:
-			doc.set(workflow_state_field, state.state)
+			if doc.doctype == 'Delivery Note' and doc.is_return == 1:
+				doc.set(workflow_state_field, 'To Put Away')
+			else:
+				doc.set(workflow_state_field, state.state)
 			return
