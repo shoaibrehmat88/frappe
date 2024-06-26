@@ -76,6 +76,9 @@ def search_widget(
 	if not searchfield:
 		searchfield = "name"
 
+	load_sheet = False
+	if doctype == 'Delivery Note' and filters.get('sales_partner') and filters.get('docstatus') == 1 and filters.get('name'):
+		load_sheet = True
 	standard_queries = frappe.get_hooks().standard_queries or {}
 
 	if query and query.split(maxsplit=1)[0].lower() != "select":
@@ -216,6 +219,13 @@ def search_widget(
 					)
 				)
 			)
+
+			if load_sheet == True:
+				results = frappe.db.get_list('Delivery Stop', fields=["delivery_note"], ignore_permissions=True)
+				d_stops = []
+				for dn in results:
+					d_stops.append(dn.delivery_note)
+				filters.append(['Delivery Note','name','not in',d_stops])
 
 			values = frappe.get_list(
 				doctype,
